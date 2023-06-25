@@ -21,13 +21,13 @@ class SecondViewController: UIViewController {
     
     lazy var nameLabel: UILabel = {
        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 30)
+        label.font = .boldSystemFont(ofSize: 32)
         return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 16)
         label.numberOfLines = 3
         return label
     }()

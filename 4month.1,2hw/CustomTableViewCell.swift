@@ -13,13 +13,14 @@ class CustomTableViewCell: UITableViewCell {
     
     lazy var nameLabel: UILabel = {
        let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 24)
+        label.font = .boldSystemFont(ofSize: 28)
+        label.numberOfLines = 2
         return label
     }()
     
     lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18)
+        label.font = .systemFont(ofSize: 16)
         return label
     }()
     
@@ -41,23 +42,24 @@ class CustomTableViewCell: UITableViewCell {
         self.addSubview(productImage)
         
         productImage.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview().inset(20)
-            make.height.width.equalTo(120)
+            make.top.trailing.bottom.equalToSuperview().inset(10)
+            make.height.width.equalTo(140)
         }
         
         self.addSubview(nameLabel)
         
         nameLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(50)
-            make.leading.trailing.equalToSuperview().inset(20)
+            make.top.equalToSuperview().offset(30)
+            make.leading.equalToSuperview().inset(10)
+            make.trailing.equalTo(productImage.snp.leading).offset(-10)
         }
         
         self.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(20)
-            make.top.equalTo(nameLabel.snp.bottom).offset(10)
-            make.trailing.equalTo(productImage.snp.leading).offset(-20)
+            make.leading.equalToSuperview().inset(10)
+            make.top.equalTo(nameLabel.snp.bottom).offset(30)
+            make.trailing.equalTo(productImage.snp.leading).offset(-10)
         }
         
     }
