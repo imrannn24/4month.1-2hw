@@ -2,7 +2,7 @@
 //  CustomTableViewCell.swift
 //  4month.1,2hw
 //
-//  Created by imran on 26.06.2023.
+//  Created by meerim on 28.06.2023.
 //
 
 import Foundation
@@ -14,7 +14,6 @@ class CustomTableViewCell: UITableViewCell {
     lazy var nameLabel: UILabel = {
        let label = UILabel()
         label.font = .boldSystemFont(ofSize: 28)
-        label.numberOfLines = 2
         return label
     }()
     
@@ -27,6 +26,13 @@ class CustomTableViewCell: UITableViewCell {
     lazy var productImage: UIImageView = {
        let image = UIImageView()
         return image
+    }()
+    
+    lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 24)
+        label.textColor = .systemGreen
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -57,9 +63,16 @@ class CustomTableViewCell: UITableViewCell {
         self.addSubview(descriptionLabel)
         
         descriptionLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().offset(10)
             make.top.equalTo(nameLabel.snp.bottom).offset(30)
             make.trailing.equalTo(productImage.snp.leading).offset(-10)
+        }
+        
+        self.addSubview(priceLabel)
+        
+        priceLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview().offset(10)
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(15)
         }
         
     }
@@ -72,6 +85,7 @@ class CustomTableViewCell: UITableViewCell {
         self.nameLabel.text = with.title
         self.descriptionLabel.text = with.description
         self.productImage.kf.setImage(with: URL(string: with.thumbnail ?? ""))
+        self.priceLabel.text = String(with.price ?? 0) + "$"
     }
     
 }

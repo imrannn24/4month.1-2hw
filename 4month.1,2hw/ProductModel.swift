@@ -2,7 +2,7 @@
 //  ProductModel.swift
 //  4month.1,2hw
 //
-//  Created by imran on 26.06.2023.
+//  Created by meerim on 28.06.2023.
 //
 
 import Foundation

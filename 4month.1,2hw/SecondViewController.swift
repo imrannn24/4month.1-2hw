@@ -2,7 +2,7 @@
 //  SecondViewController.swift
 //  4month.1,2hw
 //
-//  Created by imran on 26.06.2023.
+//  Created by meerim on 28.06.2023.
 //
 
 import Foundation
@@ -31,6 +31,13 @@ class SecondViewController: UIViewController {
         label.numberOfLines = 3
         return label
     }()
+    
+    lazy var priceLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 28)
+        label.textColor = .systemGreen
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +53,7 @@ class SecondViewController: UIViewController {
         
         nameLabel.text = product?.title
         descriptionLabel.text = product?.description
+        priceLabel.text = String(product?.price ?? 0) + "$"
         
     }
     
@@ -71,6 +79,13 @@ class SecondViewController: UIViewController {
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(30)
             make.trailing.leading.equalToSuperview().inset(20)
+        }
+        
+        view.addSubview(priceLabel)
+        
+        priceLabel.snp.makeConstraints { make in
+            make.top.equalTo(descriptionLabel.snp.bottom).offset(30)
+            make.leading.equalToSuperview().offset(20)
         }
         
     }

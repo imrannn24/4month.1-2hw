@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  4month.1,2hw
 //
-//  Created by imran on 26.06.2023.
+//  Created by meerim on 28.06.2023.
 //
 
 import UIKit
@@ -22,6 +22,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .purple
+        
+        navigationItem.title = "Products"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(openAddVC))
         
         netWorking()
         tableViewSetting()
@@ -86,6 +91,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         vc.product = catalogData[indexPath.row]
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func openAddVC(){
+        navigationController?.pushViewController(PostRequestPage(), animated: true)
     }
     
 }
